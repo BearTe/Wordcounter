@@ -53,3 +53,24 @@ public class ForkJoinComputerTest {
         assertEquals((n + 1) * (n / 2), result);
     }
 }
+
+
+extension=pdo_sqlsrv_80_ts
+extension=sqlsrv_80_ts
+extension=mbstring
+
+&lt;IfModule mime_module>
+# PHP 8
+LoadModule php_module &quot;C:/php8/php8apache2_4.dll&quot;
+PHPIniDir &quot;C:/php8&quot;
+# (...)
+&lt;/IfModule>
+&lt;Directory &quot;C:/mantisbt/&quot;>
+AllowOverride None
+Options None
+Require all granted
+&lt;/Directory>
+&lt;IfModule alias_module>
+Alias /mantisbt/ &quot;C:/mantisbt/mantisbt-2.25.2/&quot;
+# (...)
+&lt;/IfModule>
