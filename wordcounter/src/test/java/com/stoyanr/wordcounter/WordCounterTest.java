@@ -140,3 +140,38 @@ public class WordCounterTest {
         }
     }
 }
+
+
+<?php
+	require_once( 'db_table_names_inc.php' );
+
+	$upgrades = array();
+
+	$upgrades[] = new SQLUpgrade(
+			'0.19.1.user_custom.1',
+			'Add User_Custom_Field_Table',
+			"CREATE TABLE $t_custom_field_user_table (
+  			 field_id int NOT NULL default '0',
+  			 sequence int NOT NULL default '0',
+  			 PRIMARY KEY  (field_id))"
+			);
+
+	$upgrades[] = new SQLUpgrade(
+			'0.19.1.user_custom.2',
+			'Add User_Custom_Field_String_Table',
+			"CREATE TABLE $t_custom_field_user_string_table (
+  			field_id int NOT NULL default '0',
+  			user_id int NOT NULL default '0',
+  			value varchar(255) NOT NULL default '',
+  			PRIMARY KEY  (field_id,user_id))"
+			);
+      
+  	$upgrades[] = new SQLUpgrade(
+			'0.19.2.user_custom.3',
+			'Add field User_Custom_Field_Table',
+			"ALTER TABLE $t_custom_field_table 
+      ADD `access_level_rwc` INT(2)  UNSIGNED DEFAULT \"0\" NOT NULL"
+			);
+
+	return $upgrades;
+?>
